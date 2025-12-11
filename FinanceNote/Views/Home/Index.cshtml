@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>ホームダッシュボード</h1>
+
+<div class="list-group">
+    @if (User.Identity?.Name == "THINKPADX13\\taira")
+    {
+        <a asp-action="Index" asp-controller="Home" class="list-group-item list-group-item-action active">ダッシュボード</a>
+    }
+</div>
