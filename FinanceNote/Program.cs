@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using FinanceNote.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,8 @@ builder.Services.AddAuthorization(options =>
     options.FallbackPolicy = options.DefaultPolicy;
 });
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<FinanceNoteContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FinanceNoteContext") ?? throw new InvalidOperationException("Connection string 'FinanceNoteContext' not found.")));
 
 var app = builder.Build();
 
