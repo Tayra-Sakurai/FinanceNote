@@ -20,10 +20,14 @@ async function sendNotificationAsync() {
          * Registrate the service worker.
          */
         navigator.serviceWorker.register(
-            '/js/sw.js'
+            '/sw.js',
+            {
+                scope: '/',
+            }
         )
             .then(
                 serviceWorkerRegistration => {
+                    console.log(serviceWorkerRegistration);
                     serviceWorkerRegistration.pushManager.subscribe();
                 },
                 error => {
@@ -34,3 +38,5 @@ async function sendNotificationAsync() {
         alert('Failed to send message.');
     }
 }
+
+sendNotificationAsync();

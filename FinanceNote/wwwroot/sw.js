@@ -74,6 +74,14 @@ function sendNotification(event) {
     );
 }
 
+/**
+ * This is the on activation function.
+ * @param {ExtendableEvent} event This is the event arguments.
+ */
+async function onActivated(event) {
+    event.waitUntil(self.registration?.navigationPreload.enable());
+}
+
 self.addEventListener(
     'push',
     sendNotification

@@ -22,7 +22,14 @@ namespace FinanceNote.Controllers
         // GET: Tayras
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tayra.ToListAsync());
+            if (User.Identity?.Name == "THINKPADX13\\taira")
+            {
+                return View(await _context.Tayra.ToListAsync());
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // GET: Tayras/Details/5
