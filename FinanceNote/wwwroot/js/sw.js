@@ -53,9 +53,9 @@ function sendNotification(event) {
         data.tag || 'notification-all';
     /**
      * The notification instance.
-     * @lends {Notification}
+     * @lends {self.Notification}
      */
-    const notification = new Notification(
+    const notification = new self.Notification(
         title,
         {
             body,
