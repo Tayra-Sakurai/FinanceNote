@@ -73,3 +73,8 @@ function sendNotification(event) {
         }
     );
 }
+
+self.addEventListener(
+    'push',
+    sendNotification
+);
