@@ -10,19 +10,19 @@ namespace FinanceNote.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0}は必須です．")]
         [Display(Name = "日時")]
         public DateTime Time { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0}は必須です．")]
         [Display(Name = "内容")]
         public string? Event { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0}は必須です．")]
         [Display(Name = "現金")]
         public decimal Cash { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0}は必須です．")]
         [Display(Name = "ICOCA")]
         public decimal Icoca { get; set; }
     }
