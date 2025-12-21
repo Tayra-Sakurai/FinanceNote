@@ -1,13 +1,11 @@
 ﻿@model FinanceNote.Models.Tayra
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "編集画面";
 }
 
-<h1>Edit</h1>
+<h1>編集</h1>
 
-<h4>Tayra</h4>
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -19,9 +17,9 @@
                 <span asp-validation-for="Time" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+                <label asp-for="Event" class="control-label"></label>
+                <input asp-for="Event" class="form-control" />
+                <span asp-validation-for="Event" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cash" class="control-label"></label>
@@ -39,14 +37,14 @@
                 <span asp-validation-for="Coop" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="変更" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">戻る</a>
 </div>
 
 @section Scripts {

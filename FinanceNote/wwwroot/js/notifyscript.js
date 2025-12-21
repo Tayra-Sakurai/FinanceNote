@@ -13,3 +13,6 @@
  * You should have received a copy of the GNU General Public License along with FinanceNote. If not, see <https://www.gnu.org/licenses/>.
  */
 
+Notification.requestPermission();
+
+let notification = new Notification('Hello world!');

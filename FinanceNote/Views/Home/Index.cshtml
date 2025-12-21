@@ -5,9 +5,16 @@
 <h1>ホームダッシュボード</h1>
 
 <div class="list-group">
-    @if (User.Identity?.Name == "THINKPADX13\\taira")
+    <a class="list-group-item list-group-item-action active" href="#">ダッシュボード</a>
+    @switch (User.Identity?.Name)
     {
-        <a asp-action="Index" asp-controller="Home" class="list-group-item list-group-item-action active">ダッシュボード</a>
+        case "THINKPADX13\\taira":
+        case "LECLERC\\taira":
+            <a class="list-group-item list-group-item-action" asp-controller="Tayras" asp-area="" asp-action="Index">テーブル</a>
+            break;
+        case "LECLERC\\macha":
+            <a class="list-group-item list-group-item-action" asp-controller="Machas" asp-action="Index" asp-area="">テーブル</a>
+            break;
     }
 </div>
 

@@ -16,7 +16,7 @@ namespace FinanceNote.Models
 
         [Required]
         [Display(Name = "内容")]
-        public string? Title { get; set; }
+        public string? Event { get; set; }
 
         [Required]
         [Display(Name = "現金")]

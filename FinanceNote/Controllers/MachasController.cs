@@ -22,6 +22,11 @@ namespace FinanceNote.Controllers
         // GET: Machas
         public async Task<IActionResult> Index()
         {
+            if (User.Identity?.Name != "LECLERC\\macha")
+            {
+                return Forbid();
+            }
+
             return View(await _context.Macha.ToListAsync());
         }
 
