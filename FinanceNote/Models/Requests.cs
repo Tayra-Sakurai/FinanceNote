@@ -15,7 +15,6 @@ namespace FinanceNote.Models
         public string? Name { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
         [Display(Name = "日付")]
         public DateTime? Date { get; set; }
 

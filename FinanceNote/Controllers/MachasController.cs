@@ -59,7 +59,7 @@ namespace FinanceNote.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Time,Title,Cash")] Macha macha)
+        public async Task<IActionResult> Create([Bind("Id,Time,Event,Cash")] Macha macha)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace FinanceNote.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Time,Title,Cash")] Macha macha)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Time,Event,Cash")] Macha macha)
         {
             if (id != macha.Id)
             {
