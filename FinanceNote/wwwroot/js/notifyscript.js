@@ -13,30 +13,3 @@
  * You should have received a copy of the GNU General Public License along with FinanceNote. If not, see <https://www.gnu.org/licenses/>.
  */
 
-
-async function sendNotificationAsync() {
-    try {
-        /**
-         * Registrate the service worker.
-         */
-        navigator.serviceWorker.register(
-            '/sw.js',
-            {
-                scope: '/',
-            }
-        )
-            .then(
-                serviceWorkerRegistration => {
-                    console.log(serviceWorkerRegistration);
-                    serviceWorkerRegistration.pushManager.subscribe();
-                },
-                error => {
-                    alert(error);
-                }
-            );
-    } catch (e) {
-        alert('Failed to send message.');
-    }
-}
-
-sendNotificationAsync();
