@@ -13,6 +13,34 @@
  * You should have received a copy of the GNU General Public License along with FinanceNote. If not, see <https://www.gnu.org/licenses/>.
  */
 
-Notification.requestPermission();
+/**
+ * The handler of the server-sent request event.
+ * @param {MessageEvent} event The event data.
+ */
+async function notifyChange(event) {
+    if (event.data) {
+        if (Notification.permission != 'granted') {
+            /**
+             * Requests permission.
+             * @type {NotificationPermission}
+             */
+            const permission = await Notification.requestPermission();
+            if (permission != 'granted')
+                return;
+        }
+        /**
+         * Send the notification.
+         * @lends {Notification}
+         */
+        const notification = new Notification(event.data);
+        return;
+    }
+    return;
+}
 
-let notification = new Notification('Hello world!');
+const evtSource = new EventSource('/EvtController/Index');
+
+evtSource.addEventListener(
+    'message',
+    notifyChange
+);

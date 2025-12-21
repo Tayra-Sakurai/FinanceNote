@@ -156,6 +156,43 @@ namespace FinanceNote.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: Tayras/RequestPage
+        public async Task<IActionResult> RequestPage()
+        {
+            if (User.Identity == null)
+            {
+                return Forbid();
+            }
+            else if (User.Identity.Name != "THINKPADX13\\taira")
+            {
+                return Forbid();
+            }
+            decimal cashTotal = 0;
+            foreach (var item in await _context.Tayra.ToListAsync())
+            {
+                cashTotal += item.Cash;
+            }
+            return View(new Requests { Balance = cashTotal, Date = DateTime.Now, Name = User.Identity.Name });
+        }
+
+        // POST tayras/RequestPage
+        [HttpPost, ActionName("RequestPage")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RequestConfirmed([Bind("Id,Date,Name,Balance")] Requests requests)
+        {
+            if (requests == null)
+            {
+                return BadRequest();
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Add(requests);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(requests);
+        }
+
         private bool TayraExists(int id)
         {
             return _context.Tayra.Any(e => e.Id == id);
