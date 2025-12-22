@@ -25,16 +25,25 @@ namespace FinanceNote.Controllers
 
             DbSet<FinanceNote.Models.Requests> requests = _context.Requests;
 
-            while (requests != null)
+            try
             {
-                if (_context.Requests != requests)
+                while (requests != null)
                 {
-                    requests = _context.Requests;
-                    string message = "data: リクエストがあります．\n\n";
-                    await Response.WriteAsync(message);
+                    if (_context.Requests != requests)
+                    {
+                        requests = _context.Requests;
+                        string message = "data: リクエストがあります．\n\n";
+                        await Response.WriteAsync(message);
+
+                        await Task.Delay(1000, HttpContext.RequestAborted);
+                    }
                 }
+                Response.StatusCode = 418;
             }
-            Response.StatusCode = 418;
+            catch (Exception)
+            {
+                Response.StatusCode = 500;
+            }
         }
     }
 }
