@@ -19,5 +19,8 @@
 </div>
 
 @section Scripts{
-    <script src="~/js/notifyscript.js"></script>
+    @if (User.Identity?.Name == "ABRAMS\\saya")
+    {
+        <script src="~/js/notifyscript.js"></script>
+    }
 }

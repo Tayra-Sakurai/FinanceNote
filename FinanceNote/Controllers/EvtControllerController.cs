@@ -27,12 +27,14 @@ namespace FinanceNote.Controllers
 
             while (requests != null)
             {
-                string message = "データが更新されました";
-                await Response.WriteAsync("data: " + message + "\n\n");
-                await Response.Body.FlushAsync();
-
-                await Task.Delay(1000, HttpContext.RequestAborted);
+                if (_context.Requests != requests)
+                {
+                    requests = _context.Requests;
+                    string message = "data: リクエストがあります．\n\n";
+                    await Response.WriteAsync(message);
+                }
             }
+            Response.StatusCode = 418;
         }
     }
 }
