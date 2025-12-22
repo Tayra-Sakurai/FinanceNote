@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    decimal total = 0;
 }
 
 <h1>Index</h1>
@@ -26,7 +27,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            total += item.Cash;
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Time)
             </td>
@@ -45,3 +47,11 @@
 }
     </tbody>
 </table>
+
+<div class="sticky-bottom">
+    <div class="list-group">
+        <div class="list-group-item">
+            小遣い総額: &yen;@total
+        </div>
+    </div>
+</div>

@@ -2,12 +2,14 @@
 
 @{
     ViewData["Title"] = "Index";
+    decimal cashTotal = 0;
+    decimal icocaTotal = 0;
 }
 
-<h1>Index</h1>
+<h1>小遣い帳トップ</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">新規</a>
 </p>
 <table class="table">
     <thead>
@@ -29,6 +31,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+        cashTotal += item.Cash;
+        icocaTotal += item.Icoca;
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Time)
@@ -51,3 +55,14 @@
 }
     </tbody>
 </table>
+
+<div class="sticky-bottom">
+    <div class="list-group">
+        <div class="list-group-item">
+            現金残高: &yen;@cashTotal
+        </div>
+        <div class="list-group-item">
+            ICOCA 残高: &yen;@icocaTotal
+        </div>
+    </div>
+</div>
